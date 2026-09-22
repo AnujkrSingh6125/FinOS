@@ -4,7 +4,15 @@ import React, { useEffect } from "react";
 import { LoginForm } from "@/components/auth/LoginForm";
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
-import { TrendingUp, ShieldCheck, Cpu, Globe2, Sparkles } from "lucide-react";
+import {
+  TrendingUp,
+  ShieldCheck,
+  Activity,
+  Lock,
+  Globe,
+  ChevronDown,
+  Moon,
+} from "lucide-react";
 
 export default function LoginPage() {
   const { user, isLoading } = useAuth();
@@ -17,86 +25,179 @@ export default function LoginPage() {
     }
   }, [user, isLoading, router]);
 
+  const features = [
+    {
+      icon: TrendingUp,
+      title: "Automated Portfolio Analytics",
+      description: "Get deeper insights with AI",
+    },
+    {
+      icon: ShieldCheck,
+      title: "AI Risk Guardrails",
+      description: "Detect and prevent risks early",
+    },
+    {
+      icon: Activity,
+      title: "Real-Time Market Feeds",
+      description: "Stay ahead with live intelligence",
+    },
+    {
+      icon: Lock,
+      title: "Institution-Grade Security",
+      description: "Your data stays private and protected",
+    },
+  ];
+
   return (
-    <main className="min-h-screen flex flex-col justify-between p-4 sm:p-6 lg:p-8">
-      {/* Top Navigation / Brand Bar */}
-      <header className="w-full max-w-7xl mx-auto flex items-center justify-between py-4">
-        <div className="flex items-center gap-2.5">
-          <div className="h-8 w-8 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center">
-            <span className="text-emerald-400 font-bold text-sm tracking-wider">F</span>
-          </div>
-          <span className="text-base font-bold tracking-tight text-white">FinOS</span>
-        </div>
+    <main className="min-h-screen w-full flex flex-col lg:flex-row bg-[#f8fafc]">
+      {/* ================= LEFT COLUMN: HERO SHOWCASE WITH BACKGROUND IMAGE ================= */}
+      <div className="relative w-full lg:w-[58%] min-h-[600px] lg:min-h-screen flex flex-col justify-between p-8 sm:p-12 lg:p-14 text-white overflow-hidden">
+        {/* Background Image with Dark Tint Overlay */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 scale-105"
+          style={{ backgroundImage: "url('/login-bg.png')" }}
+        />
+        {/* Rich dark gradient overlay for optimal legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/92 via-slate-950/82 to-slate-950/65 backdrop-blur-[0.5px]" />
 
-        <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/80 border border-slate-800 text-xs text-slate-400">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Auth Gateway v1.0</span>
+        {/* Top Header inside Left Hero */}
+        <header className="relative z-10 flex items-center justify-between">
+          {/* FinOS Brand Logo */}
+          <div className="flex items-center gap-3">
+            {/* Custom stylized FinOS layered icon */}
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center shadow-lg shadow-emerald-500/25 p-2">
+              <svg viewBox="0 0 24 24" fill="none" className="w-full h-full text-white" stroke="currentColor" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 12h18M3 6h18M3 18h12" />
+              </svg>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold tracking-tight text-white leading-none">
+                Fin<span className="text-emerald-400">OS</span>
+              </span>
+              <span className="text-[9px] font-semibold text-slate-400 tracking-[0.25em] uppercase mt-1">
+                FINANCIAL OPERATING SYSTEM
+              </span>
+            </div>
           </div>
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-200 cursor-pointer">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span className="hidden md:inline">Institutional Security</span>
-          </div>
-        </div>
-      </header>
 
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col items-center justify-center py-8 lg:py-12">
-        {/* Hero Title & Subtitles */}
-        <div className="text-center max-w-2xl mx-auto mb-8 px-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
-            <Sparkles className="w-3 h-3" />
-            <span>Next-Gen Wealth & Capital Intelligence</span>
+          {/* Navigation Links */}
+          <nav className="hidden sm:flex items-center space-x-6 text-sm text-slate-300 font-medium">
+            <a href="#solutions" className="hover:text-emerald-400 transition-colors">
+              Solutions
+            </a>
+            <a href="#security" className="hover:text-emerald-400 transition-colors">
+              Security
+            </a>
+            <a href="#about" className="hover:text-emerald-400 transition-colors">
+              About
+            </a>
+            <a href="#contact" className="hover:text-emerald-400 transition-colors">
+              Contact
+            </a>
+          </nav>
+        </header>
+
+        {/* Center Content: Headline & 4 Feature Pillars */}
+        <div className="relative z-10 my-auto py-10 lg:py-14 max-w-xl">
+          {/* Breadcrumb / Tagline */}
+          <div className="text-[11px] font-semibold tracking-[0.25em] text-slate-300/80 uppercase mb-4 flex items-center gap-2">
+            <span>DATA</span>
+            <span className="text-emerald-400 font-bold">×</span>
+            <span>INTELLIGENCE</span>
+            <span className="text-emerald-400 font-bold">×</span>
+            <span>IMPACT</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-3">
-            FinOS
+          {/* Main Title */}
+          <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-white leading-[1.15] mb-4">
+            Turn Financial <br />
+            Data into <br />
+            <span className="text-emerald-400">Smarter Decisions</span>
           </h1>
-          <p className="text-lg sm:text-xl font-medium text-emerald-400/90 tracking-wide uppercase text-xs sm:text-sm font-mono mb-3">
-            Financial Operating System
-          </p>
-          <p className="text-base sm:text-lg text-slate-400 max-w-lg mx-auto leading-relaxed">
-            Intelligent financial decisions powered by AI.
+
+          {/* Subtitle */}
+          <p className="text-sm sm:text-base text-slate-300/90 leading-relaxed mb-8 max-w-lg">
+            FinOS is an AI-powered financial operating system designed to help
+            institutions and individuals make faster, smarter and more confident
+            decisions.
           </p>
 
-          {/* Quick Pillars */}
-          <div className="hidden md:flex items-center justify-center gap-6 mt-6 text-xs text-slate-500">
-            <span className="flex items-center gap-1.5">
-              <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
-              Automated Portfolio Analytics
-            </span>
-            <span className="h-3 w-px bg-slate-800"></span>
-            <span className="flex items-center gap-1.5">
-              <Cpu className="w-3.5 h-3.5 text-cyan-400" />
-              Autonomous AI Risk Guardrails
-            </span>
-            <span className="h-3 w-px bg-slate-800"></span>
-            <span className="flex items-center gap-1.5">
-              <Globe2 className="w-3.5 h-3.5 text-blue-400" />
-              Real-Time Macro Feeds
-            </span>
+          {/* Feature List */}
+          <div className="space-y-4">
+            {features.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div key={idx} className="flex items-start gap-3.5">
+                  <div className="h-9 w-9 rounded-full bg-emerald-950/70 border border-emerald-500/30 flex items-center justify-center shrink-0 mt-0.5 shadow-sm shadow-emerald-900/40">
+                    <Icon className="w-4 h-4 text-emerald-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-semibold text-white tracking-normal">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-slate-400 leading-normal">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Authentication Form Card */}
-        <LoginForm />
+        {/* Bottom Quote & FinOS Signature */}
+        <div className="relative z-10 pt-4 border-t border-white/10">
+          <p className="text-xs sm:text-sm italic text-slate-300/90 font-light">
+            &ldquo;Empowering better financial decisions for a stronger tomorrow.&rdquo;
+          </p>
+          <span className="block text-xs font-semibold text-slate-400 mt-1">
+            FinOS
+          </span>
+        </div>
       </div>
 
-      {/* Footer */}
-      <footer className="w-full max-w-7xl mx-auto py-6 border-t border-slate-900/90 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
-        <div className="flex items-center gap-2">
-          <span>&copy; {new Date().getFullYear()} FinOS Inc.</span>
-          <span>&middot;</span>
-          <span>Bank-Grade Encryption</span>
+      {/* ================= RIGHT COLUMN: LOGIN FORM PANEL ================= */}
+      <div className="w-full lg:w-[42%] min-h-screen flex flex-col justify-between p-6 sm:p-10 lg:p-12 bg-[#f8fafc]">
+        {/* Top bar: Language & Theme Controls */}
+        <div className="flex items-center justify-end gap-5">
+          <div className="flex items-center gap-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 cursor-pointer transition">
+            <Globe className="w-4 h-4 text-slate-500" />
+            <span>English</span>
+            <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+          </div>
+
+          <button
+            type="button"
+            className="p-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-200/60 transition focus:outline-none"
+            title="Dark mode"
+          >
+            <Moon className="w-4 h-4 text-slate-600" />
+          </button>
         </div>
-        <div className="flex items-center gap-4 text-slate-500">
-          <span className="hover:text-slate-400 cursor-pointer">Privacy Policy</span>
-          <span>&middot;</span>
-          <span className="hover:text-slate-400 cursor-pointer">Terms of Service</span>
-          <span>&middot;</span>
-          <span className="hover:text-slate-400 cursor-pointer">Security Whitepaper</span>
+
+        {/* Center: Auth Card */}
+        <div className="my-auto py-8">
+          <LoginForm />
         </div>
-      </footer>
+
+        {/* Bottom Footer */}
+        <footer className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 pt-6 border-t border-slate-200/60 max-w-[440px] w-full mx-auto">
+          <div>
+            &copy; {new Date().getFullYear()} FinOS Inc. All rights reserved.
+          </div>
+          <div className="flex items-center gap-4">
+            <a href="#privacy" className="hover:text-slate-600 transition">
+              Privacy
+            </a>
+            <a href="#terms" className="hover:text-slate-600 transition">
+              Terms
+            </a>
+            <a href="#support" className="hover:text-emerald-700 transition">
+              Support
+            </a>
+          </div>
+        </footer>
+      </div>
     </main>
   );
 }

@@ -117,8 +117,14 @@ export function OTPInput({
             onChange={(e) => handleChange(i, e)}
             onKeyDown={(e) => handleKeyDown(i, e)}
             onPaste={handlePaste}
-            className={`otp-digit-box ${hasValue ? "has-value" : ""} ${
-              isError ? "border-red-500/70 focus:ring-red-500/40 text-red-300" : ""
+            className={`w-11 h-13 sm:w-12 sm:h-14 text-center text-xl sm:text-2xl font-bold rounded-lg bg-slate-50 border text-slate-900 transition-all focus:outline-none ${
+              hasValue
+                ? "border-emerald-500 bg-white ring-1 ring-emerald-500/20"
+                : "border-slate-200 hover:border-slate-300"
+            } ${
+              isError
+                ? "border-red-400 bg-red-50/50 text-red-700 focus:border-red-500 focus:ring-red-200"
+                : "focus:border-emerald-600 focus:bg-white focus:ring-2 focus:ring-emerald-500/20"
             }`}
           />
         );
