@@ -37,17 +37,17 @@ export function GoogleLoginButton({ disabled }: GoogleLoginButtonProps) {
         onClick={handleGoogleLogin}
         disabled={disabled || isLoading}
         aria-label="Continue with Google"
-        className="w-full flex items-center justify-center gap-2.5 px-4 py-2.5 rounded-lg font-medium text-sm text-slate-700 bg-white hover:bg-slate-50 border border-slate-200/90 shadow-sm transition duration-150 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+        className="w-full flex items-center justify-center gap-3 px-5 py-3 rounded-xl font-bold text-base text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/80 border border-slate-200/90 dark:border-slate-700/80 shadow-sm hover:shadow transition duration-150 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-slate-100 dark:focus:ring-slate-800"
       >
         {isLoading ? (
           <>
-            <Loader2 className="w-4 h-4 animate-spin text-slate-500" />
+            <Loader2 className="w-5 h-5 animate-spin text-slate-500" />
             <span>Connecting to Google...</span>
           </>
         ) : (
           <>
             {/* Google official multi-colored "G" SVG */}
-            <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+            <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
               <path
                 fill="#4285F4"
                 d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"
@@ -65,14 +65,14 @@ export function GoogleLoginButton({ disabled }: GoogleLoginButtonProps) {
                 d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.25 2.63 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"
               />
             </svg>
-            <span className="font-semibold text-slate-800">Continue with Google</span>
+            <span>Continue with Google</span>
           </>
         )}
       </button>
 
       {errorMsg && (
-        <div className="mt-3 p-2.5 rounded-lg bg-amber-50 border border-amber-200 flex items-start gap-2 text-xs text-amber-800">
-          <AlertCircle className="w-4 h-4 shrink-0 text-amber-600 mt-0.5" />
+        <div className="mt-3 p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/50 flex items-start gap-2.5 text-xs text-amber-800 dark:text-amber-300">
+          <AlertCircle className="w-4 h-4 shrink-0 text-amber-600 dark:text-amber-400 mt-0.5" />
           <span>{errorMsg}</span>
         </div>
       )}

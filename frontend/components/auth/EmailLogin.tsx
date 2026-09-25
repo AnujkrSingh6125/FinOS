@@ -53,13 +53,13 @@ export function EmailLogin({ onCodeSent, disabled }: EmailLoginProps) {
       <div>
         <label
           htmlFor="email-input"
-          className="block text-xs font-semibold text-slate-700 tracking-normal mb-1.5"
+          className="block text-sm font-bold text-slate-700 dark:text-slate-200 tracking-normal mb-2"
         >
           Email address
         </label>
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-            <Mail className="h-4 w-4" />
+          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 dark:text-slate-500">
+            <Mail className="h-5 w-5" />
           </div>
           <input
             id="email-input"
@@ -72,15 +72,15 @@ export function EmailLogin({ onCodeSent, disabled }: EmailLoginProps) {
             placeholder="name@company.com"
             disabled={disabled || isLoading}
             autoComplete="email"
-            className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-900 bg-white placeholder:text-slate-400 focus:outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20 transition disabled:opacity-50"
+            className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700/80 text-base text-slate-900 dark:text-white bg-white dark:bg-slate-950/80 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-emerald-600 dark:focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 transition disabled:opacity-50"
             required
           />
         </div>
       </div>
 
       {errorMessage && (
-        <div className="p-3 rounded-lg bg-red-50 border border-red-200 flex items-start gap-2.5 text-xs text-red-700">
-          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-500" />
+        <div className="p-3 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/50 flex items-start gap-2 text-xs text-red-700 dark:text-red-300">
+          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-500 dark:text-red-400" />
           <span className="leading-relaxed">{errorMessage}</span>
         </div>
       )}
@@ -89,17 +89,17 @@ export function EmailLogin({ onCodeSent, disabled }: EmailLoginProps) {
         type="submit"
         onClick={handleSubmit}
         disabled={disabled || isLoading || !email.trim()}
-        className="w-full bg-[#047857] hover:bg-[#065f46] text-white py-2.5 px-4 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 shadow-sm transition duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
+        className="w-full bg-[#047857] hover:bg-[#065f46] dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white py-3 px-5 rounded-xl font-bold text-base flex items-center justify-center gap-2.5 shadow-md shadow-emerald-900/10 hover:shadow-lg transition duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-emerald-600/20"
       >
         {isLoading ? (
           <>
-            <Loader2 className="w-4 h-4 animate-spin text-white" />
+            <Loader2 className="w-5 h-5 animate-spin text-white" />
             <span>Sending verification code...</span>
           </>
         ) : (
           <>
             <span>Continue with Email</span>
-            <ArrowRight className="w-4 h-4 text-emerald-100" />
+            <ArrowRight className="w-5 h-5 text-emerald-100" />
           </>
         )}
       </button>

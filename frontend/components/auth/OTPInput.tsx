@@ -117,14 +117,14 @@ export function OTPInput({
             onChange={(e) => handleChange(i, e)}
             onKeyDown={(e) => handleKeyDown(i, e)}
             onPaste={handlePaste}
-            className={`w-11 h-13 sm:w-12 sm:h-14 text-center text-xl sm:text-2xl font-bold rounded-lg bg-slate-50 border text-slate-900 transition-all focus:outline-none ${
+            className={`w-9 h-11 sm:w-10 sm:h-12 text-center text-lg sm:text-xl font-bold rounded-lg bg-slate-50 dark:bg-slate-950 border text-slate-900 dark:text-white transition-all focus:outline-none ${
               hasValue
-                ? "border-emerald-500 bg-white ring-1 ring-emerald-500/20"
-                : "border-slate-200 hover:border-slate-300"
+                ? "border-emerald-500 bg-white dark:bg-slate-900 ring-1 ring-emerald-500/20"
+                : "border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
             } ${
               isError
-                ? "border-red-400 bg-red-50/50 text-red-700 focus:border-red-500 focus:ring-red-200"
-                : "focus:border-emerald-600 focus:bg-white focus:ring-2 focus:ring-emerald-500/20"
+                ? "border-red-400 dark:border-red-800 bg-red-50/50 dark:bg-red-950/40 text-red-700 dark:text-red-400 focus:border-red-500 focus:ring-red-200"
+                : "focus:border-emerald-600 dark:focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-emerald-500/20"
             }`}
           />
         );

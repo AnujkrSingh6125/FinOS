@@ -123,22 +123,22 @@ export function OTPVerification({
   };
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-3.5">
       <div>
         <button
           type="button"
           onClick={onBack}
           disabled={isVerifying || isSuccess}
-          className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-emerald-700 font-medium transition-colors mb-2.5 focus:outline-none cursor-pointer"
+          className="inline-flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 font-medium transition-colors mb-1.5 focus:outline-none cursor-pointer"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Change email address</span>
         </button>
 
-        <h2 className="text-xl font-bold text-slate-900 tracking-tight">Verify your email</h2>
-        <p className="text-sm text-slate-500 mt-1">
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Verify your email</h2>
+        <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
           We&apos;ve sent a 6-digit verification code to{" "}
-          <span className="font-semibold text-slate-800">{email}</span>
+          <span className="font-semibold text-slate-800 dark:text-slate-200">{email}</span>
         </p>
       </div>
 
@@ -153,26 +153,26 @@ export function OTPVerification({
         />
 
         {/* Expiry Timer Indicator */}
-        <div className="flex items-center justify-between mt-3 text-xs text-slate-500">
+        <div className="flex items-center justify-between mt-3 text-xs text-slate-500 dark:text-slate-400">
           <div className="flex items-center gap-1.5">
-            <Clock className="w-3.5 h-3.5 text-slate-400" />
+            <Clock className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
             <span>
               {expirySeconds > 0 ? (
                 <>
                   Code expires in{" "}
-                  <span className="font-mono font-semibold text-slate-700">
+                  <span className="font-mono font-semibold text-slate-700 dark:text-slate-300">
                     {formatTimer(expirySeconds)}
                   </span>
                 </>
               ) : (
-                <span className="text-amber-600 font-medium">Code expired</span>
+                <span className="text-amber-600 dark:text-amber-400 font-medium">Code expired</span>
               )}
             </span>
           </div>
 
           <div>
             {resendCooldown > 0 ? (
-              <span className="text-slate-400 font-mono">
+              <span className="text-slate-400 dark:text-slate-500 font-mono text-[11px]">
                 Resend in {resendCooldown}s
               </span>
             ) : (
@@ -180,7 +180,7 @@ export function OTPVerification({
                 type="button"
                 onClick={handleResend}
                 disabled={isResending}
-                className="inline-flex items-center gap-1 text-emerald-600 hover:text-emerald-700 font-semibold transition focus:outline-none cursor-pointer"
+                className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 font-semibold transition focus:outline-none cursor-pointer text-xs"
               >
                 <RefreshCw className={`w-3 h-3 ${isResending ? "animate-spin" : ""}`} />
                 <span>Resend code</span>
@@ -192,16 +192,16 @@ export function OTPVerification({
 
       {/* Error Message Banner */}
       {errorMessage && (
-        <div className="p-2.5 rounded-lg bg-red-50 border border-red-200 flex items-start gap-2 text-xs text-red-700">
-          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-500" />
+        <div className="p-2.5 rounded-lg bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/50 flex items-start gap-2 text-xs text-red-700 dark:text-red-300">
+          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-500 dark:text-red-400" />
           <span className="leading-relaxed">{errorMessage}</span>
         </div>
       )}
 
       {/* Success Notification */}
       {isSuccess && (
-        <div className="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center gap-2 text-xs text-emerald-800">
-          <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
+        <div className="p-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50 flex items-center gap-2 text-xs text-emerald-800 dark:text-emerald-300">
+          <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
           <span className="font-semibold">Verification successful! Redirecting to FinOS...</span>
         </div>
       )}
@@ -211,7 +211,7 @@ export function OTPVerification({
         type="button"
         onClick={() => handleVerify()}
         disabled={isVerifying || isSuccess || code.length !== 6 || expirySeconds <= 0}
-        className="w-full bg-[#047857] hover:bg-[#065f46] text-white py-2.5 px-4 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 shadow-sm transition duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
+        className="w-full bg-[#047857] hover:bg-[#065f46] text-white py-3 px-5 rounded-xl font-bold text-base flex items-center justify-center gap-2.5 shadow-md shadow-emerald-900/10 hover:shadow-lg transition duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-emerald-600/20"
       >
         {isVerifying ? (
           <>
@@ -229,13 +229,13 @@ export function OTPVerification({
       </button>
 
       <div className="text-center pt-1">
-        <span className="text-xs text-slate-400">
+        <span className="text-xs text-slate-400 dark:text-slate-500">
           Didn&apos;t receive the code? Check spam or{" "}
           <button
             type="button"
             onClick={handleResend}
             disabled={resendCooldown > 0 || isResending}
-            className="text-emerald-700 hover:text-emerald-800 font-medium underline underline-offset-2 disabled:text-slate-400 disabled:no-underline cursor-pointer"
+            className="text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 font-medium underline underline-offset-2 disabled:text-slate-400 dark:disabled:text-slate-600 disabled:no-underline cursor-pointer"
           >
             resend code
           </button>

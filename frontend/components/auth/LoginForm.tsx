@@ -32,23 +32,23 @@ export function LoginForm() {
       }
     >
       {step === "EMAIL_INPUT" ? (
-        <div className="space-y-4">
+        <div className="space-y-3.5">
           <EmailLogin onCodeSent={handleCodeSent} />
 
           {/* Clean minimal divider */}
-          <div className="relative flex py-2 items-center">
-            <div className="flex-grow border-t border-slate-200"></div>
-            <span className="flex-shrink mx-3 text-[11px] font-semibold tracking-wider text-slate-400">
+          <div className="relative flex py-1.5 items-center">
+            <div className="flex-grow border-t border-slate-200 dark:border-slate-800"></div>
+            <span className="flex-shrink mx-3 text-[11px] font-semibold tracking-wider text-slate-400 dark:text-slate-500">
               OR
             </span>
-            <div className="flex-grow border-t border-slate-200"></div>
+            <div className="flex-grow border-t border-slate-200 dark:border-slate-800"></div>
           </div>
 
           <GoogleLoginButton />
 
           {/* Create an account link */}
-          <div className="text-center pt-2">
-            <p className="text-xs text-slate-500">
+          <div className="text-center pt-1.5">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Don&apos;t have an account?{" "}
               <button
                 type="button"
@@ -56,7 +56,7 @@ export function LoginForm() {
                   const input = document.getElementById("email-input") as HTMLInputElement;
                   if (input) input.focus();
                 }}
-                className="font-medium text-emerald-700 hover:text-emerald-800 hover:underline cursor-pointer"
+                className="font-medium text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 hover:underline cursor-pointer"
               >
                 Create an account
               </button>
